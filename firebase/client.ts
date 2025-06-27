@@ -3,7 +3,6 @@ import { initializeApp, getApps } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { Auth, getAuth } from "firebase/auth";
-import { FirebaseStorage, getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAF5Lr5svwgEnYXFWY1UCMJ_T7ol8HeNAg",
@@ -17,19 +16,16 @@ const firebaseConfig = {
 // Initialize Firebase
 const currentApps = getApps(); // get current apps if exited
 let auth: Auth;
-let storage: FirebaseStorage;
 if (!currentApps.length) {
   // if there is no initialized app => initialize a new app
   const app = initializeApp(firebaseConfig);
   auth = getAuth(app);
-  storage = getStorage(app);
 } else {
   // if there is any initialized app => take and use that app
   const app = currentApps[0];
   auth = getAuth(app);
-  storage = getStorage(app);
 }
 
-export { auth, storage };
+export { auth };
 // any CLIENT-SIDE task that needs to use these features, just:
-// import {auth, storage} from '@/firebase/client'
+// import {auth} from '@/firebase/client'

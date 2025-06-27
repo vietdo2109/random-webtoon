@@ -39,21 +39,50 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${zain.className} ${lilitaOne.className} antialiased bg-dark-gray flex flex-col items-center`}
+        className={`${zain.variable} ${lilitaOne.variable} antialiased bg-dark-gray flex flex-col items-center`}
       >
         <header
           className=" w-full max-w-6xl min-w-3xl bg-dark-gray flex px-8 justify-between items-center 
-        py-4 sticky top-0"
+        py-4 sticky top-0 z-1000"
         >
-          <Link href="/">
-            <Image
-              src={"/logo-full.png"}
-              alt="logo"
-              className="object-fill"
-              width={100}
-              height={20}
-            />
-          </Link>
+          <div className="flex gap-10">
+            <Link href="/">
+              <Image
+                src={"/logo-full.png"}
+                alt="logo"
+                className="object-fill"
+                width={100}
+                height={20}
+              />
+            </Link>
+
+            <div className="flex gap-6 items-center text-gray-200 font-lilita-one font-thin text-sm tracking-wider">
+              <Link
+                href="/generator"
+                className="hover:underline decoration-2 underline-offset-2"
+              >
+                Generator
+              </Link>
+              <Link
+                href="/similar-webtoon"
+                className="hover:underline decoration-2 underline-offset-2"
+              >
+                Webtoon like..
+              </Link>
+              <Link
+                href="/spinner"
+                className="hover:underline decoration-2 underline-offset-2"
+              >
+                Spinner
+              </Link>
+              <Link
+                href="/about"
+                className="hover:underline decoration-2 underline-offset-2"
+              >
+                About
+              </Link>
+            </div>
+          </div>
 
           <div className="flex justify-between items-center text-white gap-8">
             <Link href={"/search"}>
@@ -66,7 +95,7 @@ export default function RootLayout({
             <UserIcon className="cursor-pointer" />
           </div>
         </header>
-        <div className="w-full max-w-6xl min-w-3xl px-8 min-h-screen">
+        <div className="w-full max-w-6xl min-w-3xl px-8 min-h-screen text-white">
           {children}
         </div>
         <footer className="w-full flex flex-col items-center gap-4 overflow-hidden mt-4">
