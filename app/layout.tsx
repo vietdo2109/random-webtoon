@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
 import { Lilita_One, Zain } from "next/font/google";
 import "./globals.css";
-import Image from "next/image";
 import {
-  ArchiveIcon,
   FacebookIcon,
   InstagramIcon,
   LinkedinIcon,
   MailIcon,
-  SearchIcon,
-  UserIcon,
 } from "lucide-react";
 import Link from "next/link";
 import SlidingTextFooter from "@/components/SlidingTextFooter";
 import MediaButton from "@/components/MediaButton";
+import Header from "@/components/Header";
 
 const lilitaOne = Lilita_One({
   weight: ["400"],
@@ -41,64 +38,12 @@ export default function RootLayout({
       <body
         className={`${zain.variable} ${lilitaOne.variable} antialiased bg-dark-gray flex flex-col items-center`}
       >
-        <header
-          className=" w-full max-w-6xl min-w-3xl bg-dark-gray flex px-8 justify-between items-center 
-        py-4 sticky top-0 z-1000"
-        >
-          <div className="flex gap-10">
-            <Link href="/">
-              <Image
-                src={"/logo-full.png"}
-                alt="logo"
-                className="object-fill"
-                width={100}
-                height={20}
-              />
-            </Link>
-
-            <div className="flex gap-6 items-center text-gray-200 font-lilita-one font-thin text-sm tracking-wider">
-              <Link
-                href="/generator"
-                className="hover:underline decoration-2 underline-offset-2"
-              >
-                Generator
-              </Link>
-              <Link
-                href="/similar-webtoon"
-                className="hover:underline decoration-2 underline-offset-2"
-              >
-                Webtoon like..
-              </Link>
-              <Link
-                href="/spinner"
-                className="hover:underline decoration-2 underline-offset-2"
-              >
-                Spinner
-              </Link>
-              <Link
-                href="/about"
-                className="hover:underline decoration-2 underline-offset-2"
-              >
-                About
-              </Link>
-            </div>
-          </div>
-
-          <div className="flex justify-between items-center text-white gap-8">
-            <Link href={"/search"}>
-              {" "}
-              <SearchIcon className="cursor-pointer" />
-            </Link>
-            <Link href={"/my-series"}>
-              <ArchiveIcon className="cursor-pointer" />
-            </Link>
-            <UserIcon className="cursor-pointer" />
-          </div>
-        </header>
-        <div className="w-full max-w-6xl min-w-3xl px-8 min-h-screen text-white">
+        <Header />
+        <div className="w-full max-w-6xl px-2 md:px-8 min-h-screen text-white">
           {children}
         </div>
-        <footer className="w-full flex flex-col items-center gap-4 overflow-hidden mt-4">
+
+        <footer className="w-full flex flex-col items-center gap-4 overflow-hidden mt-[80px]">
           <div className="w-full h-[1px] bg-zinc-500 mb-5"></div>
           <div className="flex flex-col gap-4 w-full max-w-6xl min-w-3xl px-8 text-light-gray ">
             <div className="flex justify-between ">
@@ -128,8 +73,8 @@ export default function RootLayout({
                     >
                       Webtoon like
                     </Link>
-                    <Link href="/spinner" className="hover:text-gray-200">
-                      Spinner
+                    <Link href="/random-combo" className="hover:text-gray-200">
+                      Random Combo
                     </Link>
                     <Link href="/about" className="hover:text-gray-200">
                       About

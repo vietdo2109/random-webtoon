@@ -8,7 +8,7 @@ export const updateDailyWebtoons = async (currentWebtoons: DailyWebtoon[]) => {
   const randomWebtoon = await getRandomWebtoons(1); // your random GraphQL logic
   const newDailyWebtoon: DailyWebtoon = {
     id: randomWebtoon[0].id,
-    title: randomWebtoon[0].title.english,
+    title: randomWebtoon[0].title.english || randomWebtoon[0].title.romaji,
     coverImage: randomWebtoon[0].coverImage.extraLarge,
     date: randomWebtoon[0].date,
     description: randomWebtoon[0].description,

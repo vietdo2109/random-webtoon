@@ -1,5 +1,5 @@
 import client from "@/lib/apolloClient";
-import { GET_RANDOM_WEBTOONS } from "@/app/graphql/queries/webtoons";
+import { GET_RANDOM_WEBTOONS } from "@/app/graphql/queries/randomDailyWebtoons";
 
 export async function getRandomWebtoons(perPage = 20): Promise<any[]> {
   const maxPages = 100; // You can adjust this

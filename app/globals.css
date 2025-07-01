@@ -4,6 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-input-field-gray: #28292c;
+  --color-placeholder-gray: #7f8289;
   --color-dark-gray: #1c1d21;
   --color-light-gray: #acadb2;
   --color-background: var(--background);

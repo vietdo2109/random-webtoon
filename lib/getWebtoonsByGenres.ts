@@ -1,5 +1,5 @@
 import client from "@/lib/apolloClient";
-import { GET_WEBTOONS_BY_GENRES } from "@/app/graphql/queries/webtoons";
+import { GET_WEBTOONS_BY_GENRES } from "@/app/graphql/queries/dailyWebtoonsByGenres";
 import { DailyWebtoon } from "@/types/dailyWebtoon";
 
 export async function getWebtoonsByGenres(
