@@ -131,7 +131,7 @@ const WebtoonsFiltersForm = ({ defaultValues }: Props) => {
 
         <div className="flex flex-col items-start">
           <h3>Additional fitlers</h3>
-          <div className="flex w-full rounded-sm items-center justify-between gap-6 bg-input-field-gray p-4">
+          <div className="flex w-full rounded-sm items-center justify-between gap-6 bg-input-field-gray p-4 flex-wrap">
             <div className=" flex-1  flex flex-col gap-2">
               <h4 className="text-[16px]">Number of chapters</h4>
               <div className="flex justify-center gap-4 items-center">
@@ -219,11 +219,11 @@ const WebtoonsFiltersForm = ({ defaultValues }: Props) => {
           </div>
         </div>
 
-        <div className="flex gap-4 justify-center mt-6 mb-5">
+        <div className="flex gap-4 justify-center mt-6 mb-5 flex-col md:flex-row">
           <Button
             type="button"
             onClick={() => handleSubmit("single")}
-            className="flex-1 text-xl font-zain cursor-pointer  h-[50px]"
+            className="flex-1 text-xl font-zain cursor-pointer "
             variant="secondary"
           >
             Generate single, random webtoon
@@ -231,7 +231,7 @@ const WebtoonsFiltersForm = ({ defaultValues }: Props) => {
           <Button
             type="button"
             onClick={() => handleSubmit("list")}
-            className="flex-1 text-xl font-zain cursor-pointer h-[50px] bg-purple-500 hover:bg-purple-600"
+            className="flex-1 text-xl font-zain cursor-pointer bg-purple-500 hover:bg-purple-600"
           >
             Generate list of random webtoons
           </Button>

@@ -14,7 +14,9 @@ export const GET_WEBTOON_BY_ID = gql`
       }
       bannerImage
       genres
-
+      tags {
+        name
+      }
       rankings {
         allTime
         context
@@ -22,7 +24,7 @@ export const GET_WEBTOON_BY_ID = gql`
         type
         rank
       }
-
+      averageScore
       description(asHtml: false)
       status
       startDate {

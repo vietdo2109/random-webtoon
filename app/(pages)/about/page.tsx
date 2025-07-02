@@ -10,7 +10,7 @@ const About = () => {
         height={200}
         className="rounded-full mt-4"
       />
-      <div className="flex flex-col gap-1 w-[70%] font-light bg-input-field-gray p-5">
+      <div className="flex flex-col gap-1 ư-full md:w-[70%] font-light bg-input-field-gray p-5">
         <h1 className="font-lilita-one text-3xl">About</h1>
         <div className="bg-white w-full h-[2px]"></div>
         <h2 className="text-xl mt-4"> 💬 About RandomWebtoon</h2>

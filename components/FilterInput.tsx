@@ -1,12 +1,8 @@
 "use client";
 
-import { ArrowDown, ArrowUp } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { Input } from "./ui/input";
-import { Button } from "./ui/button";
 import { Dispatch, SetStateAction, useState } from "react";
-import { stat } from "fs";
-import { array } from "zod";
-import { it } from "zod/v4/locales";
 
 type Props = {
   title: string;
@@ -111,7 +107,7 @@ const FilterInput = ({
           }}
         >
           {" "}
-          {isListOut ? <ArrowUp /> : <ArrowDown />}
+          {isListOut ? <ChevronUp /> : <ChevronDown />}
         </div>
       </div>
       <div

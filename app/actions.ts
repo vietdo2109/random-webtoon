@@ -27,9 +27,9 @@ export const updateDailyWebtoons = async (currentWebtoons: DailyWebtoon[]) => {
       lastModified: new Date(),
       genre: randomGenre,
     });
-    return updatedWebtoons;
+    return { updatedWebtoons, randomGenre };
   } catch (error) {
     console.error("Error fetching random webtoons:", error);
-    return [];
+    return;
   }
 };

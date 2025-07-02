@@ -24,6 +24,7 @@ export async function getWebtoonById(id: number): Promise<any> {
       startDate: result.startDate,
       endDate: result.endDate,
       chapters: result.chapters,
+      averageScore: result.averageScore,
       tags: result.tags,
       genres: result.genres,
     };
