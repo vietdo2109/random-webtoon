@@ -1,23 +1,22 @@
 import { gql } from "@apollo/client";
 
-export const GET_WEBTOONS_BY_GENRES = gql`
+export const GET_WEBTOONS_BY_SEARCH = gql`
   query (
     $page: Int = 1
-    $perPage: Int = 5
     $type: MediaType
+    $search: String
     $countryOfOrigin: CountryCode = KR
-    $genres: [String]
     $sort: [MediaSort] = [POPULARITY_DESC, SCORE_DESC]
   ) {
-    Page(page: $page, perPage: $perPage) {
+    Page(page: $page, perPage: 20) {
       pageInfo {
         hasNextPage
       }
       media(
         type: $type
         sort: $sort
+        search: $search
         countryOfOrigin: $countryOfOrigin
-        genre_in: $genres
         isAdult: false
       ) {
         id
@@ -26,10 +25,10 @@ export const GET_WEBTOONS_BY_GENRES = gql`
           romaji
         }
         coverImage {
-          extraLarge
+          large
         }
         genres
-        description(asHtml: false)
+        status
       }
     }
   }

@@ -11,6 +11,7 @@ import Link from "next/link";
 import SlidingTextFooter from "@/components/SlidingTextFooter";
 import MediaButton from "@/components/MediaButton";
 import Header from "@/components/Header";
+import StoreProvider from "./StoreProvider";
 
 const lilitaOne = Lilita_One({
   weight: ["400"],
@@ -45,8 +46,8 @@ export default function RootLayout({
         className={`${zain.variable} ${lilitaOne.variable} ${poppins.variable} antialiased bg-dark-gray flex flex-col items-center`}
       >
         <Header />
-        <div className="w-full max-w-6xl px-4 md:px-8 min-h-screen text-white">
-          {children}
+        <div className="w-full max-w-6xl md:px-8 min-h-screen text-white bg-dark-gray">
+          <StoreProvider>{children}</StoreProvider>
         </div>
 
         <footer className="w-full flex flex-col items-center gap-4 overflow-hidden mt-[80px]">
@@ -68,26 +69,20 @@ export default function RootLayout({
                     <Link href="/generator" className="hover:text-gray-200">
                       Generator
                     </Link>
-                    <Link href="/random" className="hover:text-gray-200">
-                      Random
-                    </Link>
-                  </div>
-                  <div className="flex flex-col gap-1">
                     <Link
                       href="/similar-webtoon"
                       className="hover:text-gray-200"
                     >
                       Webtoon like
                     </Link>
+                  </div>
+                  <div className="flex flex-col gap-1">
                     <Link href="/random-combo" className="hover:text-gray-200">
                       Random Combo
                     </Link>
                     <Link href="/about" className="hover:text-gray-200">
                       About
                     </Link>
-                  </div>
-
-                  <div className="flex flex-col gap-1">
                     <Link href="/search" className="hover:text-gray-200">
                       Search
                     </Link>

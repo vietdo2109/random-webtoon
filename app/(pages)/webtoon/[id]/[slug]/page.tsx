@@ -29,7 +29,6 @@ const Webtoon = async ({
     }
   };
   const webtoon: Webtoon = await getWebtoonById(parseFloat(id));
-  console.log(webtoon);
   const genres = webtoon.genres?.join(" · ");
   return (
     <main className="w-full flex flex-col gap-4 md:flex-row">

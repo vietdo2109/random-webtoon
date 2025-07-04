@@ -11,16 +11,14 @@ const Description = ({ text }: { text: string }) => {
         className={`${
           !isFullText ? "line-clamp-2" : ""
         } text-gray-300 font-poppins text-xs tracking-wide flex-1 leading-5`}
-      >
-        {" "}
-        {text}
-      </p>
+        dangerouslySetInnerHTML={{ __html: text }}
+      />
       <div className="w-50px">
         <div
           onClick={() => {
             setIsFullText(!isFullText);
           }}
-          className="mt-2"
+          className="mt-2 cursor-pointer"
         >
           {" "}
           {isFullText ? (

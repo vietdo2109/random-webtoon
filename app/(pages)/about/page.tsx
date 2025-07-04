@@ -15,10 +15,10 @@ const About = () => {
         <div className="bg-white w-full h-[2px]"></div>
         <h2 className="text-xl mt-4"> 💬 About RandomWebtoon</h2>
         <p>
-          Hi, I’m Viet (VDuck) — a developer who loves stories, comics, and
-          coding. I built RandomWebtoon as a fun side project to combine my
-          interest in webtoons with my curiosity about tech like Next.js, Redux,
-          and GraphQL.
+          Hi, I’m Viet — a developer who loves stories, comics, and coding. I
+          built RandomWebtoon as a fun side project to combine my interest in
+          webtoons with my curiosity about tech like Next.js, Redux, responsive
+          design, and GraphQL.
         </p>
         <p>
           {" "}
@@ -30,9 +30,9 @@ const About = () => {
 
         <h2 className="text-xl mt-4">Why I Made This</h2>
         <p>
-          To practice using Next.js 15, Firebase, Redux Toolkit, and GraphQL API
-          in a real project. To make something small but useful. To explore what
-          I enjoy — clean UI, data, and storytelling.
+          To practice using Next.js 15, Firebase, Redux Toolkit, responsive
+          design, and GraphQL API in a real project. To make something small but
+          useful. To explore what I enjoy — clean UI, data, and storytelling.
         </p>
 
         <h2 className="text-xl mt-4">What It Does</h2>
@@ -40,11 +40,12 @@ const About = () => {
           You can generate random webtoons (fully random or filtered by genre).
           You can save your favourites (if you log in). You can spin a wheel,
           search titles, and eventually talk to a bot that recommends similar
-          series (yes, I'm working on it).
+          series (yes, I{"’"}m working on it).
         </p>
         <p className="mt-2">
-          I’m still adding features and polishing things. It’s not perfect, but
-          that’s okay — this project is about learning and sharing.
+          I{"’"}m still adding features and polishing things. It{"’"}s not
+          perfect, but that{"’"}s okay — this project is about learning and
+          sharing.
         </p>
         <p> Thanks for checking it out ✌️</p>
       </div>

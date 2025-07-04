@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <header
       className="w-full max-w-6xl bg-dark-gray flex flex-col px-4 md:px-8 justify-between items-center 
-        py-3 sm:py-5 sticky top-0 z-1000 h-"
+        py-3 sm:py-5 sticky top-0 z-200"
     >
       <div className="w-full justify-between items-center flex">
         <div className="flex gap-10 h-[32px] items-center">
@@ -88,10 +88,10 @@ const Header = () => {
             Webtoon like..
           </Link>
           <Link
-            href="/spinner"
+            href="/random-combo"
             className="hover:underline decoration-2 underline-offset-2"
           >
-            Spinner
+            Random Combo
           </Link>
           <Link
             href="/about"

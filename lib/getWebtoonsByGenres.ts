@@ -5,8 +5,8 @@ import { DailyWebtoon } from "@/types/dailyWebtoon";
 export async function getWebtoonsByGenres(
   perPage = 20,
   genres: string[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any[]> {
-  console.log(perPage, genres);
   try {
     const { data } = await client.query({
       query: GET_WEBTOONS_BY_GENRES,
@@ -22,6 +22,7 @@ export async function getWebtoonsByGenres(
     });
 
     const results = data?.Page?.media || [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const webtoonsByGenres: DailyWebtoon[] = results.map((webtoon: any) => {
       return {
         coverImage: webtoon.coverImage.extraLarge,

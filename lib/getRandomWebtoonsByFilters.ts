@@ -16,6 +16,7 @@ export async function getRandomWebtoonsByFilters(
     yearLesser?: number;
     yearGreater?: number;
   } = {}
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): Promise<any[]> {
   const maxPages = 10; // You can adjust this
   const randomPage = Math.floor(Math.random() * maxPages) + 1;
@@ -60,6 +61,8 @@ export async function getRandomWebtoonsByFilters(
     });
 
     const results = data?.Page?.media || [];
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const webtoonsByGenres: DailyWebtoon[] = results.map((webtoon: any) => {
       return {
         coverImage: webtoon.coverImage.extraLarge,
@@ -81,6 +84,7 @@ export async function getRandomWebtoonsByFilters(
 
     // Optional: pick a random 1 from result list
     return webtoonsByGenres;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error("Error fetching random webtoons:", error.cause);
     return [];

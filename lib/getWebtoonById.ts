@@ -2,6 +2,7 @@ import client from "@/lib/apolloClient";
 import { GET_WEBTOON_BY_ID } from "@/app/graphql/queries/webtoonById";
 import { Webtoon } from "@/types/webtoon";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getWebtoonById(id: number): Promise<any> {
   try {
     const { data } = await client.query({
@@ -31,8 +32,9 @@ export async function getWebtoonById(id: number): Promise<any> {
 
     // Optional: pick a random 1 from result list
     return webtoon;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error("Error fetching random webtoons:", error.cause);
-    return [];
+    return;
   }
 }

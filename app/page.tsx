@@ -1,19 +1,8 @@
 import { getDailyWebtoons } from "@/data/dailyWebtoons";
 import { updateDailyWebtoons } from "./actions";
 import { DailyWebtoon } from "@/types/dailyWebtoon";
-import Image from "next/image";
-import { StarIcon } from "lucide-react";
 import { getWebtoonsByGenres } from "@/lib/getWebtoonsByGenres";
 import WebtoonsFiltersForm from "@/components/WebtoonsFiltersForm";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Link from "next/link";
-import { slugify } from "@/lib/slugify";
 import DailyWebtoons from "@/components/DailyWebtoons";
 import { Suspense } from "react";
 import DailyWebtoonsSkeleton from "@/components/skeletons/DailyWebtoonsSkeleton";
@@ -34,7 +23,7 @@ export default async function Home() {
     webtoonsByDailyGenre = await getWebtoonsByGenres(18, [dailyConfig.genre]);
   }
 
-  const chunkedWebtoons = [];
+  const chunkedWebtoons: DailyWebtoon[][] = [];
   for (let i = 0; i < webtoonsByDailyGenre.length; i += 6) {
     chunkedWebtoons.push(webtoonsByDailyGenre.slice(i, i + 6));
   }

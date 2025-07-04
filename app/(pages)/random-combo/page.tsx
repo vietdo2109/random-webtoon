@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { getRandomWebtoonsByFilters } from "@/lib/getRandomWebtoonsByFilters";
 import { Webtoon } from "@/types/webtoon";
 import WebtoonSlotMachine from "@/components/WebtoonSlotMachine";

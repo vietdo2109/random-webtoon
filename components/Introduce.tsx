@@ -10,9 +10,10 @@ const Introduce = () => {
         <div className="w-[48%] h-[132px] border-r-2 border-b-2 border-t-2 border-purple-400 -mt-[1.6px] rounded-r-2xl"></div>
         <div className="absolute inset-0 flex justify-center items-center px-8 py-6">
           <p className="max-w-[80%] text-center text-white font-zain text-2xl">
-            ✌️ Hello! I'm VDuck, creator of this site that helps you find random
-            webtoons when you're looking for something new and interesting.
-            There's a ton out there — let's find your next binge.
+            ✌️ Hello! I{"’"}m VDuck, creator of this site that helps you find
+            random webtoons when you{"’"}re looking for something new and
+            interesting. There{"’"}s a ton out there — let{"’"}s find your next
+            binge.
           </p>
         </div>
       </div>

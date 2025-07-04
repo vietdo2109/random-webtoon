@@ -31,7 +31,7 @@ const DailyWebtoons = async () => {
   const [todayWebtoon, yesterdayWebtoon, twoDaysAgoWebtoon] = [
     ...dailyConfig.webtoons,
   ];
-  const chunkedWebtoons = [];
+  const chunkedWebtoons: DailyWebtoon[][] = [];
   for (let i = 0; i < webtoonsByDailyGenre.length; i += 6) {
     chunkedWebtoons.push(webtoonsByDailyGenre.slice(i, i + 6));
   }

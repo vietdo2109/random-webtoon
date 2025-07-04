@@ -4,7 +4,8 @@
 import { useState, useEffect } from "react";
 import { Webtoon } from "@/types/webtoon";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Props {
   webtoons: Webtoon[];
@@ -42,7 +43,7 @@ const WebtoonSlotMachine = ({ webtoons }: Props) => {
           transition={{ duration: 2, ease: "easeInOut" }}
         >
           {reel.map((webtoon, idx) => (
-            <img
+            <Image
               key={idx}
               src={webtoon.coverImage || ""}
               alt={webtoon.title}
