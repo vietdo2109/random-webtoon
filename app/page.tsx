@@ -8,8 +8,11 @@ import { Suspense } from "react";
 import DailyWebtoonsSkeleton from "@/components/skeletons/DailyWebtoonsSkeleton";
 import Introduce from "@/components/Introduce";
 import MobileIntroduce from "@/components/MobileIntroduce";
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const dailyConfig = await getDailyWebtoons();
+  console.log("dailyConfig:", dailyConfig);
 
   let webtoonsByDailyGenre: DailyWebtoon[];
   if (!dailyConfig.todayFetch) {
