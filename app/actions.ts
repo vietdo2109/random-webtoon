@@ -3,6 +3,7 @@ import { GENRE_COLLECTION } from "@/constants/genres";
 import { firestore } from "@/firebase/server";
 import { getRandomWebtoons } from "@/lib/getRandomWebtoons";
 import { DailyWebtoon } from "@/types/dailyWebtoon";
+import { revalidatePath } from "next/cache";
 
 export const updateDailyWebtoons = async (currentWebtoons: DailyWebtoon[]) => {
   const randomWebtoon = await getRandomWebtoons(1); // your random GraphQL logic
@@ -27,6 +28,7 @@ export const updateDailyWebtoons = async (currentWebtoons: DailyWebtoon[]) => {
       lastModified: new Date(),
       genre: randomGenre,
     });
+    revalidatePath("/");
     return { updatedWebtoons, randomGenre };
   } catch (error) {
     console.error("Error fetching random webtoons:", error);
