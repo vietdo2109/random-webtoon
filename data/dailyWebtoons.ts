@@ -13,21 +13,11 @@ export async function getDailyWebtoons() {
   if (!dailyPicks) {
     return {
       webtoons: [],
-      todayFetch: false,
       genre: "",
     };
   }
-
-  // Convert both to YYYY-MM-DD string for comparison
-  const today = new Date().toISOString().slice(0, 10);
-  const lastModifiedDate = dailyPicks.lastModified
-    .toDate()
-    .toISOString()
-    .slice(0, 10);
-
   return {
     webtoons: dailyPicks.webtoons as DailyWebtoon[],
-    todayFetch: lastModifiedDate === today,
     genre: dailyPicks.genre,
   };
 }

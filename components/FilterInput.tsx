@@ -35,7 +35,6 @@ const FilterInput = ({
 
   const onSelect = (item: string, buttonIndex: number) => {
     if (!selectedListSetter || !statusListSetter) {
-      console.log("!selectedListSetter || !statusListSetter");
       return;
     }
 

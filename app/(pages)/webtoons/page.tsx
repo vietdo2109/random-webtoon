@@ -9,8 +9,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import WebtoonsFiltersForm from "@/components/WebtoonsFiltersForm";
+import { getMySeriesIds } from "@/data/mySeries";
 
 const Webtoons = async () => {
+  const mySeriesIds = await getMySeriesIds();
+
   return (
     <main className="flex flex-col">
       <Dialog>
@@ -29,7 +32,7 @@ const Webtoons = async () => {
           <WebtoonsFiltersForm />
         </DialogContent>
       </Dialog>
-      <RandomWebtoonsCarousel />
+      <RandomWebtoonsCarousel mySeriesIds={mySeriesIds} />
     </main>
   );
 };

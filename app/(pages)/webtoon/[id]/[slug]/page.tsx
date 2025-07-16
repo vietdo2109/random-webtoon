@@ -1,8 +1,9 @@
 import CharactersList from "@/components/CharactersList";
 import Description from "@/components/Description";
+import MySeriesButton from "@/components/MySeriesButton";
+import { getMySeriesIds } from "@/data/mySeries";
 import { getWebtoonById } from "@/lib/getWebtoonById";
 import type { FuzzyDate, Webtoon } from "@/types/webtoon";
-import { PlusCircle } from "lucide-react";
 import Image from "next/image";
 import { ReactNode } from "react";
 
@@ -30,10 +31,12 @@ const Webtoon = async ({
   };
   const webtoon: Webtoon = await getWebtoonById(parseFloat(id));
   const genres = webtoon.genres?.join(" · ");
+
+  const mySeriesIds = await getMySeriesIds();
   return (
     <main className="w-full flex flex-col gap-4 md:flex-row">
       <div className="w-full flex flex-col gap-4 md:min-w-[300px] md:max-w-[360px]">
-        <div className="w-full aspect-[1/1] bg-input-field-gray rounded-xl relative overflow-hidden xs:bg-black">
+        <div className=" w-full aspect-[1/1] bg-input-field-gray rounded-xl relative overflow-hidden xs:bg-black">
           <Image
             unoptimized
             src={webtoon.coverImage || ""}
@@ -44,15 +47,16 @@ const Webtoon = async ({
         </div>
         <div className="flex flex-col gap-1 mt-2">
           <p className="font-poppins text-gray-500 text-xs">{genres}</p>
-          <div className="w-full flex items-center justify-between">
+          <div className="w-full flex justify-between">
             {" "}
             <h1 className="font-poppins font-semibold text-3xl max-w-[90%]">
               {webtoon.title}
             </h1>
-            <div className="cursor-pointer">
-              {/* client component to add webtoon to my-series */}
-              <PlusCircle />
-            </div>
+            <MySeriesButton
+              bgColor="dark-gray"
+              webtoonId={webtoon.id}
+              isMySeries={mySeriesIds[webtoon.id] || false}
+            />
           </div>
         </div>
 

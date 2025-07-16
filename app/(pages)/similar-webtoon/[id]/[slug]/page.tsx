@@ -9,7 +9,6 @@ const SimilarWebtoonResults = async ({
 }) => {
   const { id } = await params;
   const webtoon: Webtoon = await getWebtoonById(parseFloat(id));
-  console.log(webtoon);
 
   return (
     <div>
