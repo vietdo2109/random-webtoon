@@ -3,12 +3,8 @@ import { gql } from "@apollo/client";
 export const GET_WEBTOONS_BY_FILTERS = gql`
   query (
     $page: Int = 1
-    # $id: Int
     $type: MediaType
-    # $search: String
     $countryOfOrigin: CountryCode = KR
-    # $year: String
-
     $yearLesser: FuzzyDateInt
     $yearGreater: FuzzyDateInt
     $chapterLesser: Int

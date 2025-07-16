@@ -1,5 +1,4 @@
 import { getDailyWebtoons } from "@/data/dailyWebtoons";
-import { updateDailyWebtoons } from "@/app/actions";
 import { DailyWebtoon } from "@/types/dailyWebtoon";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, StarIcon } from "lucide-react";
@@ -16,18 +15,9 @@ import { slugify } from "@/lib/slugify";
 
 const DailyWebtoons = async () => {
   const dailyConfig = await getDailyWebtoons();
-
-  let webtoonsByDailyGenre: DailyWebtoon[];
-  if (!dailyConfig.todayFetch) {
-    const response = await updateDailyWebtoons(dailyConfig.webtoons);
-    if (response) {
-      dailyConfig.genre = response.randomGenre;
-      dailyConfig.webtoons = response.updatedWebtoons;
-    }
-    webtoonsByDailyGenre = await getWebtoonsByGenres(18, [dailyConfig.genre]);
-  } else {
-    webtoonsByDailyGenre = await getWebtoonsByGenres(18, [dailyConfig.genre]);
-  }
+  const webtoonsByDailyGenre: DailyWebtoon[] = await getWebtoonsByGenres(18, [
+    dailyConfig.genre,
+  ]);
   const [todayWebtoon, yesterdayWebtoon, twoDaysAgoWebtoon] = [
     ...dailyConfig.webtoons,
   ];
@@ -169,8 +159,8 @@ const DailyWebtoons = async () => {
             ))}
           </CarouselContent>
 
-          <CarouselPrevious className="max-[768px]:hidden absolute mt-[-40px] md:mt-[-30px] left-0 -ml-5 z-1000 bg-black cursor-pointer opacity-80 hover:bg-black hover:text-white transition-opacity duration-300 disabled:opacity-0 disabled:pointer-events-none border-0 h-10 w-10" />
-          <CarouselNext className="max-[768px]:hidden absolute mt-[-40px] md:mt-[-30px] right-0 -mr-5 z-1000 bg-black cursor-pointer opacity-80  hover:bg-black hover:text-white transition-opacity duration-300 disabled:opacity-0 disabled:pointer-events-none border-0 h-10 w-10" />
+          <CarouselPrevious className="max-[768px]:hidden absolute mt-[-40px] md:mt-[-30px] left-0 -ml-5 z-100 bg-black cursor-pointer opacity-80 hover:bg-black hover:text-white transition-opacity duration-300 disabled:opacity-0 disabled:pointer-events-none border-0 h-10 w-10" />
+          <CarouselNext className="max-[768px]:hidden absolute mt-[-40px] md:mt-[-30px] right-0 -mr-5 z-100 bg-black cursor-pointer opacity-80  hover:bg-black hover:text-white transition-opacity duration-300 disabled:opacity-0 disabled:pointer-events-none border-0 h-10 w-10" />
         </Carousel>
       </div>
     </>

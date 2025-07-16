@@ -13,13 +13,17 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import Image from "next/image";
-import { PlusCircle } from "lucide-react";
 import Description from "./Description";
 import Link from "next/link";
 import { slugify } from "@/lib/slugify";
 import LoadingSpinner from "./skeletons/LoadingSpinner";
+import MySeriesButton from "./MySeriesButton";
 
-const RandomWebtoonsCarousel = () => {
+const RandomWebtoonsCarousel = ({
+  mySeriesIds,
+}: {
+  mySeriesIds: { [id: number]: boolean };
+}) => {
   const filters = useAppSelector((state) => state.filters);
   const queryVariables = filtersToQueryVariables(filters);
   const [webtoons, setWebtoons] = useState<Webtoon[]>([]); // adjust type if needed
@@ -34,7 +38,6 @@ const RandomWebtoonsCarousel = () => {
 
     fetchWebtoons();
   }, [filters]);
-
   return (
     <div className="w-full mt-4 relative ">
       {" "}
@@ -68,7 +71,7 @@ const RandomWebtoonsCarousel = () => {
                       <p className="font-poppins text-gray-500 text-xs">
                         {genres}
                       </p>
-                      <div className="w-full flex items-center justify-between">
+                      <div className="w-full flex justify-between relative">
                         <Link
                           href={`webtoon/${webtoon.id}/${slugify(
                             webtoon.title
@@ -81,8 +84,12 @@ const RandomWebtoonsCarousel = () => {
                           </h1>
                         </Link>
 
-                        <div className="cursor-pointer">
-                          <PlusCircle />
+                        <div className="min-h-[100%]">
+                          <MySeriesButton
+                            bgColor="input-field-gray"
+                            webtoonId={webtoon.id}
+                            isMySeries={mySeriesIds[webtoon.id] || false}
+                          />
                         </div>
                       </div>
                     </div>

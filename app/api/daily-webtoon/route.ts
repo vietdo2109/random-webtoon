@@ -1,9 +1,12 @@
-"use server";
 import { GENRE_COLLECTION } from "@/constants/genres";
+import { getDailyWebtoons } from "@/data/dailyWebtoons";
 import { firestore } from "@/firebase/server";
 import { getRandomWebtoons } from "@/lib/getRandomWebtoons";
 import { DailyWebtoon } from "@/types/dailyWebtoon";
-export const updateDailyWebtoons = async (currentWebtoons: DailyWebtoon[]) => {
+
+export async function GET() {
+  const dailyConfig = await getDailyWebtoons();
+
   const randomWebtoon = await getRandomWebtoons(1); // your random GraphQL logic
   const newDailyWebtoon: DailyWebtoon = {
     id: randomWebtoon[0].id,
@@ -12,7 +15,10 @@ export const updateDailyWebtoons = async (currentWebtoons: DailyWebtoon[]) => {
     date: randomWebtoon[0].date,
     description: randomWebtoon[0].description,
   };
-  const updatedWebtoons = [newDailyWebtoon, ...currentWebtoons.slice(0, 2)];
+  const updatedWebtoons = [
+    newDailyWebtoon,
+    ...dailyConfig.webtoons.slice(0, 2),
+  ];
   const cleanedWebtoons = updatedWebtoons.map((item) => ({
     ...item,
     date: item.date ?? new Date(), // fallback if undefined
@@ -26,9 +32,9 @@ export const updateDailyWebtoons = async (currentWebtoons: DailyWebtoon[]) => {
       lastModified: new Date(),
       genre: randomGenre,
     });
-    return { updatedWebtoons, randomGenre };
+    return;
   } catch (error) {
     console.error("Error fetching random webtoons:", error);
     return;
   }
-};
+}

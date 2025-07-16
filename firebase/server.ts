@@ -1,6 +1,8 @@
 // initialize app server-side, any server actions that interact with the auth and firestore will use this server-side app
 import { getApps, ServiceAccount } from "firebase-admin/app";
 import admin from "firebase-admin";
+import { Auth, getAuth } from "firebase-admin/auth";
+
 import { Firestore, getFirestore } from "firebase-admin/firestore";
 const serviceAccount = {
   type: "service_account",
@@ -20,18 +22,21 @@ const serviceAccount = {
 // Initialize Firebase
 const currentApps = getApps(); // get current apps if exited
 let firestore: Firestore;
+let auth: Auth;
 if (!currentApps.length) {
   // if there is no initialized app => initialize a new app
   const app = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount as ServiceAccount),
   });
   firestore = getFirestore(app);
+  auth = getAuth(app);
 } else {
   // if there is any initialized app => take and use that app
   const app = currentApps[0];
   firestore = getFirestore(app);
+  auth = getAuth(app);
 }
 
-export { firestore };
+export { firestore, auth };
 // any CLIENT-SIDE task that needs to use these features, just:
 // import {auth, storage} from '@/firebase/client'
