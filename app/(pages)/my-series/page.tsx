@@ -26,7 +26,8 @@ const MySeries = async () => {
   return (
     <main className="flex flex-col gap-2">
       <h1 className="font-lilita-one text-3xl">My Series</h1>
-      <div className="bg-white w-full h-[1px]">
+      <div className="bg-white w-full h-[1px]"></div>
+      <div className="w-full ">
         {mySeries.webtoons.length > 0 && token && (
           <ul className=" w-full flex flex-col gap-4 mt-4 md:grid grid-cols-2">
             {mySeries.webtoons.map((item) => {

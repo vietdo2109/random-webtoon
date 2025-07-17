@@ -24,11 +24,27 @@ const FilterInput = ({
   selectedListSetter,
   statusListSetter,
 }: Props) => {
+  console.log({
+    title,
+    placeholder,
+    filterList,
+    selectedList,
+    statusList,
+    selectedListSetter,
+    statusListSetter,
+  });
   const [isListOut, setIsListOut] = useState(false);
   const [filterListRef, setFilterListRef] = useState(filterList);
+
+  const defaultSelectorStatusArray = filterList.map((item) => {
+    const index = selectedList.indexOf(item);
+    return index !== -1 ? statusList[index] : -1;
+  });
+
   const [selectorStatusArray, setSelectorStatusArray] = useState(
-    Array(filterList.length).fill(-1)
+    defaultSelectorStatusArray
   );
+
   const onSearchList = (value: string) => {
     setFilterListRef(filterList.filter((e) => e.includes(value)));
   };
