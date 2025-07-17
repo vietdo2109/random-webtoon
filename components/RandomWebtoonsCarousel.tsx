@@ -17,13 +17,8 @@ import Description from "./Description";
 import Link from "next/link";
 import { slugify } from "@/lib/slugify";
 import LoadingSpinner from "./skeletons/LoadingSpinner";
-import MySeriesButton from "./MySeriesButton";
 
-const RandomWebtoonsCarousel = ({
-  mySeriesIds,
-}: {
-  mySeriesIds: { [id: number]: boolean };
-}) => {
+const RandomWebtoonsCarousel = () => {
   const filters = useAppSelector((state) => state.filters);
   const queryVariables = filtersToQueryVariables(filters);
   const [webtoons, setWebtoons] = useState<Webtoon[]>([]); // adjust type if needed
@@ -83,14 +78,6 @@ const RandomWebtoonsCarousel = ({
                             {webtoon.title}
                           </h1>
                         </Link>
-
-                        <div className="min-h-[100%]">
-                          <MySeriesButton
-                            bgColor="input-field-gray"
-                            webtoonId={webtoon.id}
-                            isMySeries={mySeriesIds[webtoon.id] || false}
-                          />
-                        </div>
                       </div>
                     </div>
                     <div className="px-2 sm:px-0">
