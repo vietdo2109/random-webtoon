@@ -30,8 +30,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -41,7 +43,10 @@ export default function RootLayout({
         <AuthProvider>
           <Header />
           <div className="w-full max-w-6xl px-4 md:px-8 min-h-screen text-white bg-dark-gray">
-            <StoreProvider>{children}</StoreProvider>
+            <StoreProvider>
+              {children}
+              {modal}
+            </StoreProvider>
           </div>
           <Footer />
         </AuthProvider>

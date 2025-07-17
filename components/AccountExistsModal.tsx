@@ -42,7 +42,7 @@ const AccountExistsModal = ({
         <div className="w-full px-5 gap-4 flex flex-col">
           {" "}
           {/* conditional rendering 1 of these */}
-          <ContinueWithGoogleButton />
+          <ContinueWithGoogleButton handleNavigate="refresh" />
         </div>
       </DialogContent>
     </Dialog>

@@ -7,7 +7,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import AccountExistsModal from "./AccountExistsModal";
 
-const ContinueWithGoogleButton = () => {
+const ContinueWithGoogleButton = ({
+  handleNavigate,
+}: {
+  handleNavigate: "back" | "refresh";
+}) => {
   const auth = useAuth();
   const router = useRouter();
   const [accountExistsFlag, setAccountExistsFlag] = useState(false);
@@ -19,7 +23,9 @@ const ContinueWithGoogleButton = () => {
         onClick={async () => {
           try {
             await auth?.loginWithGoogle();
-            router.refresh();
+            if (handleNavigate === "back") router.back();
+            if (handleNavigate === "refresh") router.refresh();
+
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
           } catch (e: any) {
             if (e.code === "auth/account-exists-with-different-credential") {
