@@ -1,24 +1,26 @@
-import { XIcon } from "lucide-react";
-import { Button } from "./ui/button";
+"use client";
+import ContinueWithFacebookButton from "@/components/ContinueWithFacebook";
+import ContinueWithGoogleButton from "@/components/ContinueWithGoogleButton";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogDescription,
   DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog";
-import ContinueWithGoogleButton from "./ContinueWithGoogleButton";
-import ContinueWithFacebookButton from "./ContinueWithFacebook";
+} from "@/components/ui/dialog";
+import { XIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-const SignInModal = () => {
+const SignInModalIntercept = () => {
+  const route = useRouter();
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button className="text-xs cursor-pointer bg-purple-600 hover:bg-purple-700">
-          Sign in
-        </Button>
-      </DialogTrigger>
+    <Dialog
+      open={true}
+      onOpenChange={() => {
+        route.back();
+      }}
+    >
       <DialogContent
         showCloseButton={false}
         className="bg-[#232323] text-white font-poppins border-0 w-[320px] flex flex-col items-center p-[12px] rounded-3xl pb-5"
@@ -31,7 +33,9 @@ const SignInModal = () => {
           </DialogClose>
         </div>
         <div className="w-full px-[20px]">
-          <DialogTitle className=" text-center ml-3">Hello✌️!</DialogTitle>
+          <DialogTitle className=" text-center">
+            Sign in to save your series!
+          </DialogTitle>
           <DialogDescription className="text-xs text-light-gray text-center mt-3 mb-3">
             Create an account or sign in to get your random webtoons
           </DialogDescription>
@@ -39,8 +43,8 @@ const SignInModal = () => {
 
         <div className="w-full px-5 gap-4 flex flex-col">
           {" "}
-          <ContinueWithGoogleButton handleNavigate="refresh" />
-          <ContinueWithFacebookButton handleNavigate="refresh" />
+          <ContinueWithGoogleButton handleNavigate="back" />
+          <ContinueWithFacebookButton handleNavigate="back" />
           <div className="text-center text-[10px] mt-3 text-light-gray">
             By creating an account, I agree to the{" "}
             <span className="underline cursor-pointer">Terms of Service</span>{" "}
@@ -52,4 +56,4 @@ const SignInModal = () => {
   );
 };
 
-export default SignInModal;
+export default SignInModalIntercept;

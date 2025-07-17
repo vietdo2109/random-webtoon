@@ -25,8 +25,7 @@ const MySeriesButton = ({
       onClick={async () => {
         const tokenRetsult = await auth?.currentUser?.getIdTokenResult();
         if (!tokenRetsult) {
-          //   router.push("/login");
-          console.log("login please");
+          router.push("/login");
           return;
         }
         if (isMySeries) {
