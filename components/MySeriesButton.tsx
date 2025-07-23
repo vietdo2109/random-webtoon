@@ -34,6 +34,7 @@ const MySeriesButton = ({
             await removeMySeries(webtoonId, tokenRetsult.token);
             toast("Removed from My Series");
           } catch (e) {
+            console.log(e);
             toast("Cannot remove from My Series, try again later!");
           }
         } else {
@@ -41,6 +42,8 @@ const MySeriesButton = ({
             await addMySeries(webtoonId, tokenRetsult.token);
             toast("Added to My Series");
           } catch (e) {
+            console.log(e);
+
             toast("Cannot add to My Series, try again later!");
           }
         }

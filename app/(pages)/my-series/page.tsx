@@ -21,7 +21,6 @@ const MySeries = async () => {
     trueWebtoonIds.length,
     trueWebtoonIds
   );
-  console.log(mySeries);
 
   return (
     <main className="flex flex-col gap-2">
