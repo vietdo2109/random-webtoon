@@ -17,8 +17,6 @@ export async function getRandomWebtoonsByFilters(
     yearGreater?: number;
   } = {}
 ): Promise<Webtoon[]> {
-  const maxAttempts = 5;
-
   const yearGreaterInt = vars.yearGreater
     ? vars.yearGreater * 10000
     : undefined;
@@ -71,7 +69,7 @@ export async function getRandomWebtoonsByFilters(
     });
 
     const results = data?.Page?.media || [];
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return results.map((webtoon: any) => ({
       coverImage: webtoon.coverImage?.extraLarge,
       description: webtoon.description,
@@ -92,8 +90,8 @@ export async function getRandomWebtoonsByFilters(
     return [];
   }
 }
-
 async function findLastValidPage(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   baseVariables: Record<string, any>,
   perPage: number,
   maxPageCap = 100

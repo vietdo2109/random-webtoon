@@ -22,7 +22,6 @@ import {
 } from "@/lib/features/filters/filterSlice";
 import { usePathname } from "next/navigation";
 import { filtersToQueryVariables } from "@/lib/filtersToQueryVariables";
-import LoadingSpinner from "./skeletons/LoadingSpinner";
 
 const WebtoonsFiltersForm = () => {
   const dispatch = useAppDispatch();

@@ -152,7 +152,8 @@ const WebtoonSlotMachine = () => {
       )}
       {noMatch && (
         <div className="text-center text-yellow-500 font-medium mt-4">
-          🎰 Oops! No match this time. Try another spin!
+          🎰 Oops! No webtoon matches the combo: {selectedGenre} + {selectedTag}
+          . Try another spin!
         </div>
       )}{" "}
     </div>
