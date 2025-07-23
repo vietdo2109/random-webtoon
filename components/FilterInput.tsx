@@ -24,15 +24,6 @@ const FilterInput = ({
   selectedListSetter,
   statusListSetter,
 }: Props) => {
-  console.log({
-    title,
-    placeholder,
-    filterList,
-    selectedList,
-    statusList,
-    selectedListSetter,
-    statusListSetter,
-  });
   const [isListOut, setIsListOut] = useState(false);
   const [filterListRef, setFilterListRef] = useState(filterList);
 

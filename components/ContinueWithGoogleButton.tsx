@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import AccountExistsModal from "./AccountExistsModal";
+import { toast } from "sonner";
 
 const ContinueWithGoogleButton = ({
   handleNavigate,
@@ -23,6 +24,8 @@ const ContinueWithGoogleButton = ({
         onClick={async () => {
           try {
             await auth?.loginWithGoogle();
+            toast("Welcome!");
+
             if (handleNavigate === "back") router.back();
             if (handleNavigate === "refresh") router.refresh();
 

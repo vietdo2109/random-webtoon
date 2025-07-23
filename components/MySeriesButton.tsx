@@ -7,6 +7,7 @@ import {
   removeMySeries,
 } from "@/app/(pages)/webtoon/[id]/[slug]/action";
 import { CheckCircle, PlusCircle } from "lucide-react";
+import { toast } from "sonner";
 
 const MySeriesButton = ({
   webtoonId,
@@ -29,9 +30,19 @@ const MySeriesButton = ({
           return;
         }
         if (isMySeries) {
-          await removeMySeries(webtoonId, tokenRetsult.token);
+          try {
+            await removeMySeries(webtoonId, tokenRetsult.token);
+            toast("Removed from My Series");
+          } catch (e) {
+            toast("Cannot remove from My Series, try again later!");
+          }
         } else {
-          await addMySeries(webtoonId, tokenRetsult.token);
+          try {
+            await addMySeries(webtoonId, tokenRetsult.token);
+            toast("Added to My Series");
+          } catch (e) {
+            toast("Cannot add to My Series, try again later!");
+          }
         }
 
         router.refresh();

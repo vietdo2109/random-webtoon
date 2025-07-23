@@ -18,7 +18,6 @@ const SignInModalIntercept = () => {
     <Dialog
       open={true}
       onOpenChange={() => {
-        console.log("openchange");
         route.back();
       }}
     >

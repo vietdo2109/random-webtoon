@@ -22,6 +22,7 @@ import {
 } from "@/lib/features/filters/filterSlice";
 import { usePathname } from "next/navigation";
 import { filtersToQueryVariables } from "@/lib/filtersToQueryVariables";
+import LoadingSpinner from "./skeletons/LoadingSpinner";
 
 const WebtoonsFiltersForm = () => {
   const dispatch = useAppDispatch();
@@ -30,6 +31,8 @@ const WebtoonsFiltersForm = () => {
 
   const genresCollection = GENRE_COLLECTION.map((str) => str); // all genres options
   const tagsCollection = TAG_COLLECTION.map((str) => str);
+  const [isGenerating, setIsGenerating] = useState(false);
+
   const [genres, setGenres] = useState<string[]>(filters.selectedGenres); // selected genres (included and excluded)
   const [genresStatus, setGenresStatus] = useState<number[]>(
     filters.selectedGenresStatus
@@ -59,12 +62,15 @@ const WebtoonsFiltersForm = () => {
 
     if (type === "single") {
       // get single random webtoon with formData (id, name) => create slug
+      setIsGenerating(true);
       const randomWebtoons: Webtoon[] = await getRandomWebtoonsByFilters(
         50,
         queryVariables
       );
       const randomOne = Math.floor(Math.random() * randomWebtoons.length) + 1;
       const slug = slugify(randomWebtoons[randomOne].title);
+      setIsGenerating(false);
+
       // navigate to /webtoon/[id]/[slug - webtoon name]
       router.push(`/webtoon/${randomWebtoons[randomOne].id}/${slug}`);
     } else {
@@ -193,7 +199,11 @@ const WebtoonsFiltersForm = () => {
               className="flex-1 text-xl font-zain cursor-pointer "
               variant="secondary"
             >
-              Generate single, random webtoon
+              {isGenerating ? (
+                <div className="w-4 h-4 border-2 border-black border-b-transparent rounded-full animate-spin"></div>
+              ) : (
+                "Generate single, random webtoon"
+              )}
             </Button>
             <Button
               type="button"

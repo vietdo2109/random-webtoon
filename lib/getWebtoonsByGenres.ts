@@ -15,7 +15,6 @@ export async function getWebtoonsByGenres(
         perPage,
         type: "MANGA",
         countryOfOrigin: "KR",
-        sort: ["POPULARITY_DESC"], // You can swap this for RANDOM if supported later
         genres: genres,
       },
       fetchPolicy: "no-cache",
