@@ -50,7 +50,7 @@ const WebtoonSlotMachine = () => {
       });
 
       setWebtoon(result[0] || null);
-      if (!webtoon) {
+      if (!result[0]) {
         setNoMatch(true);
       }
       setSpinning(false);
