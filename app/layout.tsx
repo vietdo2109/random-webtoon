@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import StoreProvider from "./StoreProvider";
 import { AuthProvider } from "@/context/auth";
 import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
 
 const lilitaOne = Lilita_One({
   weight: ["400"],
@@ -40,16 +41,32 @@ export default function RootLayout({
       <body
         className={`${zain.variable} ${lilitaOne.variable} ${poppins.variable} antialiased bg-dark-gray flex flex-col items-center`}
       >
-        <AuthProvider>
-          <Header />
-          <div className="w-full max-w-6xl px-4 md:px-8 min-h-screen text-white bg-dark-gray">
-            <StoreProvider>
+        <StoreProvider>
+          <AuthProvider>
+            <Header />
+            <div className="w-full max-w-6xl px-4 md:px-8 min-h-screen text-white bg-dark-gray">
               {children}
               {modal}
-            </StoreProvider>
-          </div>
-          <Footer />
-        </AuthProvider>
+              <Toaster
+                position="top-center"
+                toastOptions={{
+                  style: {
+                    background: "black",
+                    color: "white",
+                    opacity: "96%",
+                    border: "none",
+                    marginTop: "50px",
+                    borderRadius: "30px",
+                    display: "flex",
+                    justifyContent: "center",
+                    fontSize: "16px",
+                  },
+                }}
+              />
+            </div>
+            <Footer />
+          </AuthProvider>
+        </StoreProvider>
       </body>
     </html>
   );

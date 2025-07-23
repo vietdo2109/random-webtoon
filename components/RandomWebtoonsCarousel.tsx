@@ -42,7 +42,7 @@ const RandomWebtoonsCarousel = () => {
         </div>
       )}
       {/* Add horizontal padding */}
-      {!loading && (
+      {!loading && webtoons.length > 0 && (
         <Carousel opts={{ loop: true }} className="overflow-visible">
           <CarouselContent className="flex">
             {webtoons.map((webtoon) => {
@@ -98,6 +98,12 @@ const RandomWebtoonsCarousel = () => {
           <CarouselPrevious className="max-[768px]:hidden absolute left-2 top-[300px] -translate-y-1/2 z-10 bg-black opacity-80 hover:text-black border-0 h-10 w-10" />
           <CarouselNext className="max-[768px]:hidden absolute right-2 top-[300px] -translate-y-1/2 z-10 bg-black opacity-80 hover:text-black border-0 h-10 w-10" />
         </Carousel>
+      )}
+      {!loading && webtoons.length <= 0 && (
+        <div className="mt-5 mx-auto font-poppins text-center">
+          Wow. Not even one match? You broke the randomizer 😵‍💫 — try different
+          filters and save the day!
+        </div>
       )}
     </div>
   );

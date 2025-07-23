@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { filtersReducer } from "./features/filters/filterSlice";
-import { slotMachineReducer } from "./features/slotMachine/slotMachine";
+import { mySeriesReducer } from "./features/mySeries/mySeriesSlice";
 
 export const makeStore = () =>
   configureStore({
     reducer: {
       filters: filtersReducer,
-      slotMachine: slotMachineReducer,
+      mySeries: mySeriesReducer,
     },
   });
 

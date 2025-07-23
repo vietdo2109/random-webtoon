@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import AccountExistsModal from "./AccountExistsModal";
+import { toast } from "sonner";
 
 const ContinueWithFacebookButton = ({
   handleNavigate,
@@ -22,6 +23,7 @@ const ContinueWithFacebookButton = ({
         onClick={async () => {
           try {
             await auth?.loginWithFacebook();
+            toast("Welcome! You're now signed in.!");
             if (handleNavigate === "back") router.back();
             if (handleNavigate === "refresh") router.refresh();
 

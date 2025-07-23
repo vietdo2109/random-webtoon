@@ -1,6 +1,6 @@
 "use client";
 
-import { auth } from "@/firebase/client";
+import { auth, db } from "@/firebase/client";
 import {
   FacebookAuthProvider,
   GoogleAuthProvider,
@@ -10,6 +10,8 @@ import {
 } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { removeToken, setToken } from "./actions";
+import { toast } from "sonner";
+import { useAppDispatch } from "@/lib/hooks";
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -21,6 +23,7 @@ type AuthContextType = {
 };
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const dispatch = useAppDispatch(); // <-- added
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -43,6 +46,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const logout = async () => {
     await auth.signOut();
+    toast("You have signed out.");
   };
 
   const loginWithGoogle = async () => {
@@ -56,11 +60,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     provider.addScope("public_profile");
 
     const result = await signInWithPopup(auth, provider);
-
     // 1️⃣ grab the OAuth token
     const credential = FacebookAuthProvider.credentialFromResult(result);
     const token = credential?.accessToken;
-    console.log("Facebook Access Token:", token);
     if (token) {
       // 2️⃣ build a token‑protected URL
       const securePhotoURL = appendAccessToken(result.user.photoURL, token);
