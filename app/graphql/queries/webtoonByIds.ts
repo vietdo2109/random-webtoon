@@ -6,7 +6,7 @@ export const GET_WEBTOON_BY_IDS = gql`
       pageInfo {
         hasNextPage
       }
-      media(id_in: $ids) {
+      media(id_in: $ids, isAdult: false) {
         id
         title {
           english

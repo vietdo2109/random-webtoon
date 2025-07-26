@@ -13,7 +13,12 @@ export const GET_RANDOM_WEBTOONS = gql`
         hasNextPage
         currentPage
       }
-      media(type: $type, countryOfOrigin: $countryOfOrigin, sort: $sort) {
+      media(
+        type: $type
+        countryOfOrigin: $countryOfOrigin
+        sort: $sort
+        isAdult: false
+      ) {
         id
         title {
           romaji
